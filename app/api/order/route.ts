@@ -1,13 +1,21 @@
 import { NextResponse } from "next/server";
 import Razorpay from "razorpay";
 
-const razorpay = new Razorpay({
-  key_id: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID!,
-  key_secret: process.env.RAZORPAY_KEY_SECRET!,
-});
 
 export async function POST(request: Request) {
   try {
+    const keyId = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
+    const keySecret = process.env.RAZORPAY_KEY_SECRET;
+
+    if (!keyId || !keySecret) {
+      console.warn("Razorpay credentials not found in environment variables.");
+    }
+
+    const razorpay = new Razorpay({
+      key_id: keyId || "rzp_test_mock_id",
+      key_secret: keySecret || "mock_secret",
+    });
+
     const { amount } = await request.json();
     
     if (!amount || isNaN(amount)) {
