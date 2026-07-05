@@ -1,0 +1,97 @@
+:root {
+  color-scheme: dark;
+}
+
+body {
+  background: #08111f;
+  color: #f8fafc;
+}
+
+.navbar {
+  background: rgba(8, 17, 31, 0.82);
+  backdrop-filter: blur(18px);
+}
+
+.hero {
+  min-height: 100vh;
+  padding: 9rem 0 5rem;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(34, 211, 238, 0.22), transparent 28%),
+    radial-gradient(circle at 80% 12%, rgba(16, 185, 129, 0.18), transparent 26%),
+    linear-gradient(135deg, #08111f, #0d1828 55%, #06121a);
+}
+
+.fw-black {
+  font-weight: 900;
+}
+
+.section {
+  padding: 6rem 0;
+}
+
+.muted {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.eyebrow {
+  color: #22d3ee;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.app-panel,
+.info-card,
+.feature-card,
+.dataset-card {
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  background: rgba(15, 23, 42, 0.72);
+  border-radius: 0.75rem;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.24);
+}
+
+.app-panel {
+  padding: 1.25rem;
+}
+
+.info-card,
+.feature-card,
+.dataset-card {
+  height: 100%;
+  padding: 1.25rem;
+}
+
+.dot {
+  display: inline-block;
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 999px;
+}
+
+.filters {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(8rem, 1fr));
+  gap: 0.75rem;
+}
+
+.dataset-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.dataset-meta span {
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  border-radius: 999px;
+  color: #cbd5e1;
+  font-size: 0.78rem;
+  padding: 0.35rem 0.7rem;
+}
+
+@media (max-width: 576px) {
+  .filters {
+    grid-template-columns: 1fr;
+  }
+}
+

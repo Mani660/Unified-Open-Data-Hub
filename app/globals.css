@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 210 40% 98%;
+  --foreground: 222 47% 11%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --primary: 189 94% 43%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 220 14% 96%;
+  --secondary-foreground: 222 47% 11%;
+  --muted: 216 16% 94%;
+  --muted-foreground: 220 9% 42%;
+  --accent: 150 65% 50%;
+  --accent-foreground: 222 47% 11%;
+  --border: 220 13% 88%;
+  --input: 220 13% 88%;
+  --ring: 189 94% 43%;
+}
+
+.dark {
+  --background: 222 47% 7%;
+  --foreground: 210 40% 98%;
+  --card: 222 47% 10%;
+  --card-foreground: 210 40% 98%;
+  --primary: 189 94% 52%;
+  --primary-foreground: 222 47% 7%;
+  --secondary: 217 28% 15%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217 28% 14%;
+  --muted-foreground: 215 20% 69%;
+  --accent: 151 67% 54%;
+  --accent-foreground: 222 47% 7%;
+  --border: 217 27% 19%;
+  --input: 217 27% 19%;
+  --ring: 189 94% 52%;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  letter-spacing: 0;
+}
+
+::selection {
+  background: rgba(34, 211, 238, 0.35);
+}
+
+.glass {
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0.38)),
+    rgba(255, 255, 255, 0.2);
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(26px);
+}
+
+.dark .glass {
+  background:
+    linear-gradient(135deg, rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.34)),
+    rgba(15, 23, 42, 0.22);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+}
+
+.mesh-bg {
+  background:
+    radial-gradient(circle at 12% 18%, rgba(34, 211, 238, 0.26), transparent 26%),
+    radial-gradient(circle at 84% 8%, rgba(16, 185, 129, 0.22), transparent 24%),
+    radial-gradient(circle at 68% 80%, rgba(244, 114, 182, 0.16), transparent 23%),
+    radial-gradient(circle at 18% 72%, rgba(250, 204, 21, 0.12), transparent 20%);
+}
+
+.data-grid {
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.13) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.13) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.gradient-text {
+  background: linear-gradient(110deg, #0f172a, #0891b2 38%, #059669 70%, #111827);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.dark .gradient-text {
+  background: linear-gradient(110deg, #f8fafc, #67e8f9 40%, #6ee7b7 72%, #fef3c7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.section-shell {
+  position: relative;
+  isolation: isolate;
+}
+
+.section-shell::before {
+  content: "";
+  position: absolute;
+  inset: -1px 0 auto;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(34, 211, 238, 0.28), transparent);
+}

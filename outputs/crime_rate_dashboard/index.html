@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Crime Data Analysis Dashboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span>Global + India crime data · 1969-2024</p>
+          <h1>Crime Data Analysis <strong>Dashboard</strong></h1>
+          <p class="subtitle">
+            Explore India incident volume, global crime-index rankings, violent-crime
+            indicators, juvenile crime rates, and drug-offence patterns from the consolidated workbook.
+          </p>
+          <p class="source-note">
+            Data is taken from the supplied Crime_Data_Analysis workbook and its companion analysis tabs.
+          </p>
+        </div>
+
+        <div class="hero-metrics" aria-label="Key crime indicators">
+          <article>
+            <span>Total Records</span>
+            <strong id="totalRecords">73,734</strong>
+            <small>All source datasets</small>
+          </article>
+          <article>
+            <span>India Cases</span>
+            <strong id="indiaCases">40,160</strong>
+            <small>Incident records</small>
+          </article>
+          <article>
+            <span>Countries</span>
+            <strong>179</strong>
+            <small>Covered globally</small>
+          </article>
+          <article>
+            <span>World Cities</span>
+            <strong>453</strong>
+            <small>Crime index ranking</small>
+          </article>
+        </div>
+      </section>
+
+      <section class="surface">
+        <section class="toolbar" aria-label="Dashboard filters">
+          <label>
+            <span>View</span>
+            <select id="viewFilter">
+              <option value="overview">Executive overview</option>
+              <option value="india">India incident focus</option>
+              <option value="global">Global comparison</option>
+            </select>
+          </label>
+          <label>
+            <span>City focus</span>
+            <select id="cityFilter"></select>
+          </label>
+          <label>
+            <span>Crime domain</span>
+            <select id="domainFilter"></select>
+          </label>
+          <button id="resetButton" type="button">Reset</button>
+        </section>
+
+        <section class="wide-card map-card">
+          <div class="card-head">
+            <div>
+              <h2>India incident landscape</h2>
+              <p>Hover or tap a city marker to see its incident profile.</p>
+            </div>
+            <div class="mini-stat">
+              <span>Closure rate</span>
+              <strong id="closureKpi">50.0%</strong>
+            </div>
+          </div>
+          <div class="map-layout">
+            <canvas id="cityMap" height="430"></canvas>
+            <aside>
+              <h3 id="cityName">All Indian cities</h3>
+              <p id="citySummary">Select a city marker or use the filter to focus the dashboard.</p>
+              <div class="rank-list" id="cityCards"></div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="insight-grid">
+          <article class="card">
+            <h2>Dataset Mix</h2>
+            <canvas id="domainChart" height="280"></canvas>
+          </article>
+          <article class="card">
+            <h2>Drug Offences by Year</h2>
+            <canvas id="drugTrendChart" height="280"></canvas>
+          </article>
+          <article class="card">
+            <h2>Crime Records by Region</h2>
+            <canvas id="violentRegionChart" height="280"></canvas>
+          </article>
+          <article class="card">
+            <h2>World Crime vs Safety</h2>
+            <canvas id="crimeScatterChart" height="280"></canvas>
+          </article>
+        </section>
+
+        <section class="wide-card">
+          <div class="card-head">
+            <div>
+              <h2>Reporter detail table</h2>
+              <p>City-level India incident records for quick comparison.</p>
+            </div>
+            <div class="mini-stat">
+              <span>Avg. crime index</span>
+              <strong id="crimeIndexKpi">44.9</strong>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>City</th>
+                  <th>Incidents</th>
+                  <th>Closure rate</th>
+                  <th>Top domain</th>
+                </tr>
+              </thead>
+              <tbody id="detailRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="./dashboard_data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

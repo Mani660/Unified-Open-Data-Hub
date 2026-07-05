@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>India Population 3D Dashboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="dashboard">
+      <header class="hero">
+        <div>
+          <p class="eyebrow">Workbook data | Census 2011 with 2024 estimates</p>
+          <h1>India Population Dashboard</h1>
+          <p class="subtitle">
+            More accurate totals, clearer estimate labels, and richer 3D-style visuals
+            for state and union territory population patterns.
+          </p>
+        </div>
+        <div class="hero-orbit" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+      </header>
+
+      <section class="accuracy-strip" aria-label="Data accuracy summary">
+        <article>
+          <span>Source table rows</span>
+          <strong>36 states/UTs + India total</strong>
+        </article>
+        <article>
+          <span>2011 total used</span>
+          <strong id="exactTotal">1,210,854,977</strong>
+        </article>
+        <article>
+          <span>2024 values</span>
+          <strong>Workbook estimates</strong>
+        </article>
+      </section>
+
+      <section class="kpis" aria-label="Key population indicators">
+        <article class="kpi">
+          <span>Total population</span>
+          <strong id="totalPopulation">1.21B</strong>
+          <small>2011 Census</small>
+        </article>
+        <article class="kpi">
+          <span>2024 estimate</span>
+          <strong id="estimate2024">1.45B</strong>
+          <small>19.8% higher than 2011</small>
+        </article>
+        <article class="kpi">
+          <span>Sex ratio</span>
+          <strong id="sexRatio">943</strong>
+          <small>Females per 1,000 males</small>
+        </article>
+        <article class="kpi">
+          <span>Urban share</span>
+          <strong id="urbanShare">31.2%</strong>
+          <small>Of classified rural/urban population</small>
+        </article>
+      </section>
+
+      <section class="panel wide">
+        <div class="panel-title">
+          <h2>Top States by Population</h2>
+          <p>3D bars use exact 2011 population values from the workbook.</p>
+        </div>
+        <div id="population3d" class="bars3d" aria-label="3D population bar chart"></div>
+      </section>
+
+      <section class="insight-row">
+        <article class="insight-card">
+          <span>Largest state</span>
+          <strong>Uttar Pradesh</strong>
+          <small>199,812,341 people in 2011</small>
+        </article>
+        <article class="insight-card">
+          <span>Highest density</span>
+          <strong>Delhi (UT)</strong>
+          <small>11,297 people per km2</small>
+        </article>
+        <article class="insight-card">
+          <span>Highest sex ratio</span>
+          <strong>Kerala</strong>
+          <small>1,084 females per 1,000 males</small>
+        </article>
+      </section>
+
+      <section class="difference-grid" aria-label="Difference highlights">
+        <article class="difference-card">
+          <span>2011 to 2024 difference</span>
+          <strong id="nationalGrowthDiff">+240,080,814</strong>
+          <small id="nationalGrowthPct">+19.8% estimated growth</small>
+        </article>
+        <article class="difference-card">
+          <span>Male vs female difference</span>
+          <strong id="genderDiff">+37,255,074 male</strong>
+          <small>Difference in classified 2011 gender totals</small>
+        </article>
+        <article class="difference-card">
+          <span>Rural vs urban difference</span>
+          <strong id="ruralUrbanDiff">+455,981,902 rural</strong>
+          <small>Difference in classified 2011 residence totals</small>
+        </article>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <div class="panel-title">
+            <h2>Rural vs Urban</h2>
+            <p>Pie graph retained with exact classified counts.</p>
+          </div>
+          <canvas id="ruralUrbanChart" height="260"></canvas>
+        </article>
+
+        <article class="panel">
+          <div class="panel-title">
+            <h2>Gender Split</h2>
+            <p>Male and female population distribution.</p>
+          </div>
+          <canvas id="genderChart" height="260"></canvas>
+        </article>
+
+        <article class="panel">
+          <div class="panel-title">
+            <h2>Population Density</h2>
+            <p>Highest people per square kilometer.</p>
+          </div>
+          <canvas id="densityChart" height="280"></canvas>
+        </article>
+
+        <article class="panel">
+          <div class="panel-title">
+            <h2>Most Urbanized</h2>
+            <p>Top states/UTs by urban population share.</p>
+          </div>
+          <canvas id="urbanChart" height="280"></canvas>
+        </article>
+
+        <article class="panel">
+          <div class="panel-title">
+            <h2>Best Sex Ratio</h2>
+            <p>Highest female count per 1,000 males.</p>
+          </div>
+          <canvas id="sexRatioChart" height="280"></canvas>
+        </article>
+
+        <article class="panel">
+          <div class="panel-title">
+            <h2>Large-State Growth to 2024</h2>
+            <p>Estimated growth for 2011 populations above 10M.</p>
+          </div>
+          <canvas id="growthChart" height="280"></canvas>
+        </article>
+
+        <article class="panel full-span">
+          <div class="panel-title">
+            <h2>All States/UTs Population Rank</h2>
+            <p>Every state and union territory by 2011 population.</p>
+          </div>
+          <canvas id="allStatesChart" height="520"></canvas>
+        </article>
+      </section>
+
+      <section class="panel state-explorer" aria-label="State and union territory explorer">
+        <div class="panel-title state-title">
+          <div>
+            <h2>Graph for Each State and UT</h2>
+            <p>Select any state or union territory to see individual charts and differences.</p>
+          </div>
+          <label>
+            <span>State / UT</span>
+            <select id="stateSelect"></select>
+          </label>
+        </div>
+        <div class="state-summary" id="stateSummary"></div>
+        <div class="state-charts">
+          <article>
+            <h3>2011 vs 2024</h3>
+            <canvas id="statePopChart" height="240"></canvas>
+          </article>
+          <article>
+            <h3>Rural vs Urban</h3>
+            <canvas id="stateResidenceChart" height="240"></canvas>
+          </article>
+          <article>
+            <h3>Male vs Female</h3>
+            <canvas id="stateGenderChart" height="240"></canvas>
+          </article>
+          <article>
+            <h3>Density and Sex Ratio</h3>
+            <canvas id="stateMetricChart" height="240"></canvas>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel source-panel">
+        <h2>Accuracy Notes</h2>
+        <p>
+          2011 population, density, sex ratio, rural/urban and gender values are taken
+          from the supplied workbook. The 2024 values are treated as estimates because
+          they are not Census 2011 fields. Rural/urban and gender percentages are
+          calculated from their classified totals, so the pie percentages stay internally
+          consistent even if category totals differ slightly from the national total row.
+        </p>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
