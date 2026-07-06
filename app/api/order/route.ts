@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import Razorpay from "razorpay";
 
+export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
   try {

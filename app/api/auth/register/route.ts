@@ -35,7 +35,7 @@ export async function POST(req: NextRequest) {
         passwordHash,
         college: college || null,
         role: "USER",
-        emailVerified: false
+        emailVerified: true // Auto-verify email for local development/testing convenience
       }
     });
 
